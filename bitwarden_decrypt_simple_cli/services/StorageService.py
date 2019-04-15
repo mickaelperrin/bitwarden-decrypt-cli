@@ -13,13 +13,8 @@ class StorageService:
         self.database_path = self.set_database_path(database_path)
         self.database = self._read_datase_file()
 
-    def _read_datase_file(self):
-        with open(self.database_path, 'r') as fp:
-            try:
-                database = json_load(fp)
-                return database
-            except ValueError:
-                print("error loading JSON")
+    def get(self, key):
+        return self.database.get(key)
 
     @staticmethod
     def guess_database_dir():
@@ -30,9 +25,17 @@ class StorageService:
         elif system() == 'Darwin':
             return os_path.join(environ.get('HOME'), 'Library/Application Support/Bitwarden CLI')
         elif system() == 'Windows':
-            return os_path.joint(environ.get('APPDATA'), 'Bitwarden CLI')
+            return os_path.join(environ.get('APPDATA'), 'Bitwarden CLI')
         else:
-            return os_path.joint(environ.get('HOME'), '.config/Bitwarden CLI')
+            return os_path.join(environ.get('HOME'), '.config/Bitwarden CLI')
+
+    def _read_datase_file(self):
+        with open(self.database_path, 'r') as fp:
+            try:
+                database = json_load(fp)
+                return database
+            except ValueError:
+                print("error loading JSON")
 
     def set_database_path(self, path):
         if path is None:
