@@ -1,0 +1,39 @@
+from .__version__ import __version__
+from sys import exit
+
+
+class CliSimple:
+
+    action: str
+    field: str
+    script_name: str
+    uuid: str
+
+    def __init__(self, script_name, action='version', uuid=None, field='password'):
+        self.action = action
+        self.field = field
+        self.script_name = script_name
+        self.uuid = uuid
+
+    def run(self):
+        if self.action == 'get':
+            if self.uuid is None:
+                print('Error: UUID is required to get secret')
+                print(self.usage())
+                exit(1)
+            return self.get(self.uuid, self.field)
+        else:
+            return self.version()
+
+    @staticmethod
+    def usage(action='get'):
+        if action == 'get':
+            print('Usage: get UUID [field]')
+
+    @staticmethod
+    def get(uuid, field):
+        print('getting ' + field + ' of ' + uuid)
+
+    @staticmethod
+    def version():
+        print('Version: ' + __version__)
