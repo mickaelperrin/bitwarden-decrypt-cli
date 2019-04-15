@@ -1,6 +1,6 @@
 from .__version__ import __version__
 from sys import exit
-
+from bitwarden_decrypt_simple_cli.Bitwarden import Bitwarden
 
 class CliSimple:
 
@@ -32,7 +32,8 @@ class CliSimple:
 
     @staticmethod
     def get(uuid, field):
-        print('getting ' + field + ' of ' + uuid)
+        app = Bitwarden()
+        return app.get(uuid, field)
 
     @staticmethod
     def version():
