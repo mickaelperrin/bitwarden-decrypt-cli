@@ -1,5 +1,6 @@
 from os import environ, path as os_path
 from platform import system
+from json import load as json_load
 
 
 class StorageService:
@@ -10,6 +11,15 @@ class StorageService:
 
     def __init__(self, database_path=None):
         self.database_path = self.set_database_path(database_path)
+        self.database = self._read_datase_file()
+
+    def _read_datase_file(self):
+        with open(self.database_path, 'r') as fp:
+            try:
+                database = json_load(fp)
+                return database
+            except ValueError:
+                print("error loading JSON")
 
     @staticmethod
     def guess_database_dir():
