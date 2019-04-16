@@ -11,6 +11,7 @@ def common_data(item):
         nl='\n',
         organization_id='1ff51ccd-0a25-46a2-a3cd-aa3000cfa874',
         protected_key='ArxoewBOPtCYZKqn34f8CoMQVUrNZnrhGU9OYuJu8UpB7DngEwf/TEHjbxPJJhUDG+DnPQR76J9d12/4tnGT5C6ZaLxxInRooT4AuX2ljIrSppCee1AvzIMu7ljGhR++ng==',
+        protected_key_decoded=b'/lCGAMDGAq+mjRP3FJv+VNDDnbrYcVGnsiPeXTm4NfU=',
         test_database_filename='bitwarden_db.json',
         user_email='dev+bitwarden@mickaelperrin.fr',
         user_id='03780246-7f1d-4221-8615-aa3000cd8123',
