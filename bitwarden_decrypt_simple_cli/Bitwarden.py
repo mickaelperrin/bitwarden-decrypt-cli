@@ -3,6 +3,8 @@ from bitwarden_decrypt_simple_cli.services.ContainerService import ContainerServ
 from bitwarden_decrypt_simple_cli.services.CryptoService import CryptoService
 from bitwarden_decrypt_simple_cli.services.SecureStorageService import SecureStorageService
 from bitwarden_decrypt_simple_cli.services.StorageService import StorageService
+from bitwarden_decrypt_simple_cli.services.UserService import UserService
+from bitwarden_decrypt_simple_cli.services.CipherService import CipherService
 
 
 class Bitwarden:
@@ -15,6 +17,8 @@ class Bitwarden:
         self.storageService = StorageService()
         self.cryptoService = CryptoService(self.storageService)
         self.secureStorageService = SecureStorageService(self.storageService, self.cryptoService)
+        self.userService = UserService(self.storageService)
+        self.cipherService = CipherService(self.storageService, self.userService)
         self.containerService = ContainerService()
         self.containerService.add_service(self.cryptoService)
         self.containerService.add_service(self.secureStorageService)
@@ -29,4 +33,5 @@ class Bitwarden:
 
     def get(self, uuid, field):
         self._exit_if_no_session()
+        cipher = self.cipherService.get(uuid)
         print('getting ' + field + ' of ' + uuid)

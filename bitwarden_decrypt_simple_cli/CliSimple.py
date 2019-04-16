@@ -2,6 +2,7 @@ from .__version__ import __version__
 from sys import exit
 from bitwarden_decrypt_simple_cli.Bitwarden import Bitwarden
 
+
 class CliSimple:
 
     action: str

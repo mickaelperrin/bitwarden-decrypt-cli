@@ -108,6 +108,14 @@ def user_service():
     storage_service = StorageService(path.join(path.dirname(__file__), common_data('test_database_filename')))
     return UserService(storage_service)
 
+
+@pytest.fixture()
+def cipher_service():
+    storage_service = StorageService(path.join(path.dirname(__file__), common_data('test_database_filename')))
+    user_service = UserService(storage_service)
+    return CipherService(storage_service, user_service)
+
+
 @pytest.fixture()
 def cipher_response():
     return CipherResponse(common_data('cipher_response'))

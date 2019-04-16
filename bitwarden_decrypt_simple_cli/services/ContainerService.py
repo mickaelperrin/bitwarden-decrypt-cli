@@ -1,5 +1,5 @@
-from bitwarden_decrypt_simple_cli.services.CryptoService import CryptoService
-from bitwarden_decrypt_simple_cli.services.SecureStorageService import SecureStorageService
+import bitwarden_decrypt_simple_cli.services.CryptoService as CryptoService
+import bitwarden_decrypt_simple_cli.services.SecureStorageService as SecureStorageService
 
 
 class ContainerService:
@@ -11,10 +11,10 @@ class ContainerService:
         def add_service(self, service):
             self.services[type(service).__name__] = service
 
-        def get_crypto_service(self) -> CryptoService:
+        def get_crypto_service(self) -> CryptoService.CryptoService:
             return self.services['CryptoService']
 
-        def get_secure_storage_service(self) -> SecureStorageService:
+        def get_secure_storage_service(self) -> SecureStorageService.SecureStorageService:
             return self.services['SecureStorageService']
 
         def get_service(self, service):
