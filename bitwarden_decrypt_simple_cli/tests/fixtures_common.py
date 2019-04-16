@@ -3,6 +3,7 @@ from os import path
 from bitwarden_decrypt_simple_cli.services.StorageService import StorageService
 from bitwarden_decrypt_simple_cli.services.SecureStorageService import SecureStorageService
 from bitwarden_decrypt_simple_cli.services.CryptoService import CryptoService
+from bitwarden_decrypt_simple_cli.services.UserService import UserService
 
 
 def common_data(item):
@@ -44,3 +45,7 @@ def secure_storage_service():
 def crypto_service():
     storage_service = StorageService(path.join(path.dirname(__file__), common_data('test_database_filename')))
     return CryptoService(storage_service)
+@pytest.fixture()
+def user_service():
+    storage_service = StorageService(path.join(path.dirname(__file__), common_data('test_database_filename')))
+    return UserService(storage_service)
