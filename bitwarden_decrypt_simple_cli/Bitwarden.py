@@ -1,10 +1,12 @@
 from os import environ
+from bitwarden_decrypt_simple_cli.services.ContainerService import ContainerService
 from bitwarden_decrypt_simple_cli.services.CryptoService import CryptoService
 from bitwarden_decrypt_simple_cli.services.SecureStorageService import SecureStorageService
 from bitwarden_decrypt_simple_cli.services.StorageService import StorageService
 
 
 class Bitwarden:
+    containerService: ContainerService
     cryptoService: CryptoService
     secureStorageService: SecureStorageService
     storageService: StorageService
@@ -13,6 +15,9 @@ class Bitwarden:
         self.storageService = StorageService()
         self.cryptoService = CryptoService(self.storageService)
         self.secureStorageService = SecureStorageService(self.storageService, self.cryptoService)
+        self.containerService = ContainerService()
+        self.containerService.add_service(self.cryptoService)
+        self.containerService.add_service(self.secureStorageService)
 
     def _exit_if_no_session(self):
         if not environ.get('BW_SESSION'):
