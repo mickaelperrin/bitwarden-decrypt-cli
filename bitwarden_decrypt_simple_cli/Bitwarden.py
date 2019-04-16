@@ -1,4 +1,5 @@
 from os import environ
+from sys import exit, stdout, stderr
 from bitwarden_decrypt_simple_cli.services.ContainerService import ContainerService
 from bitwarden_decrypt_simple_cli.services.CryptoService import CryptoService
 from bitwarden_decrypt_simple_cli.services.SecureStorageService import SecureStorageService
@@ -34,4 +35,12 @@ class Bitwarden:
     def get(self, uuid, field):
         self._exit_if_no_session()
         cipher = self.cipherService.get(uuid)
-        print('getting ' + field + ' of ' + uuid)
+        if cipher is None:
+            print('Unable to find entry with id :' + uuid, file=stderr)
+            exit(1)
+        decrypted_value = cipher.decrypt_field(field)
+        if type(decrypted_value).__name__ == 'bytes':
+            print(str(decrypted_value, 'utf-8'), end='')
+        else:
+            print(decrypted_value, file=stderr)
+

@@ -70,13 +70,13 @@ class CipherString:
         if self.decryptedValue:
             return self.decryptedValue
 
-        cypto_service = ContainerService.ContainerService().getCryptoService()
+        cypto_service = ContainerService.ContainerService().get_crypto_service()
         if not cypto_service:
-            raise Exception('Container service not initilized')
+            raise Exception('Container service not initialized')
 
         try:
-            org_key = cypto_service.getOrgKey(org_id)
-            self.decryptedValue = cypto_service.decryptToUtf8(self, org_key)
+            org_key = cypto_service.get_org_key(org_id)
+            self.decryptedValue = cypto_service.decrypt_to_utf8(self, org_key)
         except Exception as e:
             T.error(e)
             self.decryptedValue = '[error: cannot decrypt]'

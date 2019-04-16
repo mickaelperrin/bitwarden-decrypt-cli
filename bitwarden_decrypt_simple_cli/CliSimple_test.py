@@ -60,10 +60,12 @@ def test_get_uuid(cli_get_uuid, capsys, no_bw_session):
 def test_get_uuid(cli_get_uuid, capsys, bw_session):
     cli_get_uuid.run()
     std = capsys.readouterr()
-    assert std.out == 'getting password of ' + common_data('uuid_login_personal') + nl
+    assert std.out == 'login_p_password'
 
 
 def test_get_uuid_username(cli_get_uuid_username, capsys):
     cli_get_uuid_username.run()
     std = capsys.readouterr()
-    assert std.out == 'getting username of ' + common_data('uuid_login_personal') + nl
+    assert std.out == 'login_p_username'
+
+
