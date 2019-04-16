@@ -49,3 +49,5 @@ class Cipher(Domain):
     def decrypt_field(self, field):
         if field in ['username', 'password']:
             return self.login.decrypt_field(field, self.organizationId)
+        if field == 'uri':
+            return self.login.decrypt_uri(self.organizationId, 1)

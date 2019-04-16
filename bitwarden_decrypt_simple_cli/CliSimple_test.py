@@ -69,3 +69,8 @@ def test_get_uuid_username(cli_get_uuid_username, capsys):
     assert std.out == 'login_p_username'
 
 
+def test_get_uuid_uri(capsys):
+    CliSimple('script', 'get', common_data('uuid_login_personal'), 'uri').run()
+    std = capsys.readouterr()
+    assert std.out == 'login_p_uri1'
+
