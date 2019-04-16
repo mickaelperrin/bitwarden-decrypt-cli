@@ -23,6 +23,9 @@ class Bitwarden:
         if not environ.get('BW_SESSION'):
             print('Environement variable BW_SESSION is not set.')
             exit(1)
+        if not self.cryptoService.has_key():
+            print('Vault is locked.')
+            exit(1)
 
     def get(self, uuid, field):
         self._exit_if_no_session()
