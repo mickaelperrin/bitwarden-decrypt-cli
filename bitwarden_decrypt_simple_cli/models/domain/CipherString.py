@@ -1,6 +1,6 @@
-from enums.EncryptionType import EncryptionType
-from services.Tools import T
-from services.ContainerService import ContainerService
+from bitwarden_decrypt_simple_cli.enums.EncryptionType import EncryptionType
+from bitwarden_decrypt_simple_cli.services.Tools import T
+import bitwarden_decrypt_simple_cli.services.ContainerService as ContainerService
 
 
 class CipherString:
@@ -66,19 +66,18 @@ class CipherString:
         else:
             return
 
-    def decrypt(self, orgId):
+    def decrypt(self, org_id):
         if self.decryptedValue:
             return self.decryptedValue
 
-        cyptoService = ContainerService().getCryptoService()
-        if not cyptoService:
+        cypto_service = ContainerService.ContainerService().getCryptoService()
+        if not cypto_service:
             raise Exception('Container service not initilized')
 
         try:
-            orgKey = cyptoService.getOrgKey(orgId)
-            self.decryptedValue = cyptoService.decryptToUtf8(self, orgKey)
+            org_key = cypto_service.getOrgKey(org_id)
+            self.decryptedValue = cypto_service.decryptToUtf8(self, org_key)
         except Exception as e:
             T.error(e)
             self.decryptedValue = '[error: cannot decrypt]'
         return self.decryptedValue
-

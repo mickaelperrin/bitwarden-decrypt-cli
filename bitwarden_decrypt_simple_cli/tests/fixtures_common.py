@@ -38,3 +38,9 @@ def storage_service():
 def secure_storage_service():
     storage_service = StorageService(path.join(path.dirname(__file__), common_data('test_database_filename')))
     return SecureStorageService(storage_service, CryptoService(storage_service))
+
+
+@pytest.fixture()
+def crypto_service():
+    storage_service = StorageService(path.join(path.dirname(__file__), common_data('test_database_filename')))
+    return CryptoService(storage_service)
