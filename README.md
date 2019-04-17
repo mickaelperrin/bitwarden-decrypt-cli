@@ -14,6 +14,8 @@ The script currently handles the decryption of the following entities:
 
 and the following fields:
 
+- name
+- notes
 - password
 - uri: retrieve first uri without new line
 - uris: retrieve all uris, one per line

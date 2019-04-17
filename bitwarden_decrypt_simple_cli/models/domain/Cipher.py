@@ -47,6 +47,8 @@ class Cipher(Domain):
                 self.fields.append(Field(field, already_encrypted))
 
     def decrypt_field(self, field):
+        if field in ['name', 'notes']:
+            return self.__getattribute__(field).decrypt(self.organizationId)
         if field in ['username', 'password']:
             return self.login.decrypt_field(field, self.organizationId)
         if field == 'uri':
