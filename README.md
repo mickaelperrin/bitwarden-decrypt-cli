@@ -2,6 +2,21 @@
 
 > This is a port of the Bitwarden NodeJS CLI to Python focused on decryption of secrets
 
+## How to use ?
+
+python3 main.py get UUID FIELD
+
+## Currently supported fields
+
+The script currently handles the decryption of the following entities:
+
+- login
+
+and the following fields:
+
+- password
+- username
+
 ## Why this project ?
 
 We use Ansible to manage infrastructures and use a lookup plugin to grab hundred of secrets. Each secret is retrieven 
@@ -11,5 +26,3 @@ According to https://github.com/bitwarden/cli/issues/67, node looks like to suff
 
 This port to Python is aimed to increase secrets lookup performance. First benchmarks spotted that secrets could be 
 retrieven in around 0.15s with this port.
-
-
