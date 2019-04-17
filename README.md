@@ -8,18 +8,18 @@ python3 main.py get UUID FIELD
 
 ## Currently supported fields
 
-The script currently handles the decryption of the following entities:
+The script currently handles the decryption of the following entities and fields:
 
 - login
-
-and the following fields:
-
-- name
-- notes
-- password
-- uri: retrieve first uri without new line
-- uris: retrieve all uris, one per line
-- username
+    - name
+    - notes
+    - password
+    - uri: retrieve first uri without new line
+    - uris: retrieve all uris, one per line
+    - username
+- note
+    - name
+    - notes
 
 ## Why this project ?
 

@@ -96,3 +96,17 @@ def test_get_login_personal_notes(capsys):
     CliSimple('script', 'get', common_data('uuid_login_personal'), 'notes').run()
     std = capsys.readouterr()
     assert std.out == 'login_p_notes'
+
+
+@pytest.mark.usefixtures("bw_session")
+def test_get_note_personal_notes(capsys):
+    CliSimple('script', 'get', common_data('uuid_note_personal'), 'notes').run()
+    std = capsys.readouterr()
+    assert std.out == 'note_p_content'
+
+
+@pytest.mark.usefixtures("bw_session")
+def test_get_note_personal_name(capsys):
+    CliSimple('script', 'get', common_data('uuid_note_personal'), 'name').run()
+    std = capsys.readouterr()
+    assert std.out == 'note personal'

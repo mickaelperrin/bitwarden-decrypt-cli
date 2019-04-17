@@ -72,7 +72,8 @@ def common_data(item):
         test_database_filename='data.json',
         user_email='dev+bitwarden@mickaelperrin.fr',
         user_id='03780246-7f1d-4221-8615-aa3000cd8123',
-        uuid_login_personal='fd8870cc-3659-40aa-9492-aa3000cedbb3'
+        uuid_login_personal='fd8870cc-3659-40aa-9492-aa3000cedbb3',
+        uuid_note_personal='450cbad2-580b-4523-bce8-aa3000cf641a'
     ).get(item)
 
 
