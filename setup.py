@@ -8,8 +8,8 @@ from shutil import rmtree
 
 from setuptools import find_packages, setup, Command
 
-NAME = 'Bitwarden decrypt simple CLI'
-DESCRIPTION = 'Simple bitwarden CLI written in Python to decrypt secrets'
+NAME = 'bitwarden simple cli'
+DESCRIPTION = 'Simple bitwarden CLI written in Python to list and decrypt secrets'
 URL = 'https://github.com/mickaelperrin/bitwarden-decrypt-cli'
 EMAIL = 'dev@mickaelperrin.fr'
 AUTHOR = 'Mickaël Perrin'
