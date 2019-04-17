@@ -11,6 +11,7 @@ python3 main.py get UUID FIELD
 The script currently handles the decryption of the following entities and fields:
 
 - login
+    - [ custom field name ]
     - name
     - notes
     - password
@@ -18,6 +19,7 @@ The script currently handles the decryption of the following entities and fields
     - uris: retrieve all uris, one per line
     - username
 - note
+    - [ custom field name ]
     - name
     - notes
     

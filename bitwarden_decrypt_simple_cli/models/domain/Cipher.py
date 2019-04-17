@@ -49,9 +49,15 @@ class Cipher(Domain):
     def decrypt_field(self, field):
         if field in ['name', 'notes']:
             return self.__getattribute__(field).decrypt(self.organizationId)
-        if field in ['username', 'password']:
+        elif field in ['username', 'password']:
             return self.login.decrypt_field(field, self.organizationId)
-        if field == 'uri':
+        elif field == 'uri':
             return self.login.decrypt_uri(self.organizationId, 1)
-        if field == 'uris':
+        elif field == 'uris':
             return [self.login.decrypt_uri(self.organizationId, i) for i in range(1, len(self.login.uris)+1)]
+        elif len(self.fields) > 0:
+            # try custom fields
+            for custom_field in self.fields:
+                if str(custom_field.name.decrypt(self.organizationId), 'utf-8') == field:
+                    return custom_field.value.decrypt(self.organizationId)
+
