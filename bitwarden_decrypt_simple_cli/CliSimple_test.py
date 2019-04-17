@@ -64,35 +64,35 @@ def test_get_uuid(cli_get_uuid, capsys, bw_session):
 
 
 @pytest.mark.usefixtures("bw_session")
-def test_get_uuid_username(cli_get_uuid_username, capsys):
+def test_get_login_personal_username(cli_get_uuid_username, capsys):
     cli_get_uuid_username.run()
     std = capsys.readouterr()
     assert std.out == 'login_p_username'
 
 
 @pytest.mark.usefixtures("bw_session")
-def test_get_uuid_uri(capsys):
+def test_get_login_personal_uri(capsys):
     CliSimple('script', 'get', common_data('uuid_login_personal'), 'uri').run()
     std = capsys.readouterr()
     assert std.out == 'login_p_uri1'
 
 
 @pytest.mark.usefixtures("bw_session")
-def test_get_uuid_uris(capsys):
+def test_get_login_personal_uris(capsys):
     CliSimple('script', 'get', common_data('uuid_login_personal'), 'uris').run()
     std = capsys.readouterr()
     assert std.out == 'login_p_uri1\nlogin_p_uri2\n'
 
 
 @pytest.mark.usefixtures("bw_session")
-def test_get_uuid_name(capsys):
+def test_get_login_personal_name(capsys):
     CliSimple('script', 'get', common_data('uuid_login_personal'), 'name').run()
     std = capsys.readouterr()
     assert std.out == 'login personnal'
 
 
 @pytest.mark.usefixtures("bw_session")
-def test_get_uuid_name(capsys):
+def test_get_login_personal_notes(capsys):
     CliSimple('script', 'get', common_data('uuid_login_personal'), 'notes').run()
     std = capsys.readouterr()
     assert std.out == 'login_p_notes'
