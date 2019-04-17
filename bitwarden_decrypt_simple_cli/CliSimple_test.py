@@ -76,3 +76,9 @@ def test_get_uuid_uri(capsys):
     std = capsys.readouterr()
     assert std.out == 'login_p_uri1'
 
+
+@pytest.mark.usefixtures("bw_session")
+def test_get_uuid_uris(capsys):
+    CliSimple('script', 'get', common_data('uuid_login_personal'), 'uris').run()
+    std = capsys.readouterr()
+    assert std.out == 'login_p_uri1\nlogin_p_uri2\n'

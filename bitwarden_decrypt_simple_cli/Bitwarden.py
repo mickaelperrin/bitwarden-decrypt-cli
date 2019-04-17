@@ -41,6 +41,9 @@ class Bitwarden:
         decrypted_value = cipher.decrypt_field(field)
         if type(decrypted_value).__name__ == 'bytes':
             print(str(decrypted_value, 'utf-8'), end='')
+        elif type(decrypted_value).__name__ == 'list':
+            for item in decrypted_value:
+                print(str(item, 'utf-8'))
         else:
             print(decrypted_value, file=stderr)
 

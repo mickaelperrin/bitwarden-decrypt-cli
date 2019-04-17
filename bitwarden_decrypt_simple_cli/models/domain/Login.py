@@ -28,6 +28,6 @@ class Login(Domain):
     def decrypt_field(self, field, org_id):
         return self[field].decrypt(org_id)
 
-    def decrypt_uri(self, org_id):
+    def decrypt_uri(self, org_id, i=1):
         # Only process first URI at the moment
-        return self.uris[0].decrypt(org_id)
+        return self.uris[i-1].decrypt(org_id)
