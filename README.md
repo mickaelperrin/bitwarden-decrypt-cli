@@ -4,7 +4,14 @@
 
 ## How to use ?
 
+### Get decrypted valued
+```
 python3 main.py get UUID FIELD
+```
+### List items
+```
+python3 main.py list
+```
 
 ## Currently supported fields
 

@@ -47,3 +47,10 @@ class Bitwarden:
         else:
             print(decrypted_value, file=stderr)
 
+    def list(self):
+        self._exit_if_no_session()
+        ciphers = self.storageService.list_ciphers(self.userService.get_user_id())
+        for cipher in ciphers:
+            print(cipher['id'] + ' ' + str(cipher['name'].decrypt(cipher['org_id']), 'utf-8'))
+
+

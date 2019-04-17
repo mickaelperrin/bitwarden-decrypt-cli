@@ -181,8 +181,19 @@ def test_get_login_personal_custom_field_unchecked(cli_get_uuid_username, capsys
     std = capsys.readouterr()
     assert std.out == 'false'
 
+
 @pytest.mark.usefixtures("bw_session")
 def test_get_note_personal_customfield(capsys):
     CliSimple('script', 'get', common_data('uuid_note_personal'), 'note_p_custom_field_text').run()
     std = capsys.readouterr()
     assert std.out == 'note_p_custom_field_text_value'
+
+
+@pytest.mark.usefixtures("bw_session")
+def test_list(capsys):
+    CliSimple('script', 'list').run()
+    std = capsys.readouterr()
+    assert std.out == \
+"fe6e74aa-a099-4cc1-ae8e-aa3000d02c14 acme login 1\n\
+fd8870cc-3659-40aa-9492-aa3000cedbb3 login personnal\n\
+450cbad2-580b-4523-bce8-aa3000cf641a note personal\n"

@@ -23,6 +23,8 @@ class CliSimple:
                 print(self.usage())
                 exit(1)
             return self.get(self.uuid, self.field)
+        elif self.action == 'list':
+            return self.list()
         else:
             return self.version()
 
@@ -35,6 +37,11 @@ class CliSimple:
     def get(uuid, field):
         app = Bitwarden()
         return app.get(uuid, field)
+
+    @staticmethod
+    def list():
+        app = Bitwarden()
+        return app.list()
 
     @staticmethod
     def version():

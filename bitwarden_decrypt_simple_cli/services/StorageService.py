@@ -1,6 +1,7 @@
 from os import environ, path as os_path
 from platform import system
 from json import load as json_load
+from bitwarden_decrypt_simple_cli.models.domain.CipherString import CipherString
 
 
 class StorageService:
@@ -28,6 +29,13 @@ class StorageService:
             return os_path.join(environ.get('APPDATA'), 'Bitwarden CLI')
         else:
             return os_path.join(environ.get('HOME'), '.config/Bitwarden CLI')
+
+    def list_ciphers(self, user_id):
+        ciphers = self.database.get('ciphers_' + user_id)
+        list = []
+        for k, cipher in ciphers.items():
+            list.append(dict(id=cipher['id'], name=CipherString(cipher['name']), org_id=cipher.get('organizationId')))
+        return list
 
     def _read_datase_file(self):
         with open(self.database_path, 'r') as fp:
