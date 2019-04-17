@@ -41,3 +41,7 @@ According to https://github.com/bitwarden/cli/issues/67, node looks like to suff
 
 This port to Python is aimed to increase secrets lookup performance. First benchmarks spotted that secrets could be 
 retrieven in around 0.15s with this port.
+
+## License
+
+GPLv3
