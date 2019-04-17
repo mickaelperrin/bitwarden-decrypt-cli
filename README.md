@@ -20,6 +20,8 @@ The script currently handles the decryption of the following entities and fields
 - note
     - name
     - notes
+    
+It supports decryption of personal and organization ciphers.
 
 ## Why this project ?
 

@@ -31,8 +31,8 @@ class CryptoService:
     encKey: SymmetricCryptoKey = None
     legacyEtmKey: SymmetricCryptoKey
     key: SymmetricCryptoKey = None
-    orgKeys: []
-    privateKey: str
+    orgKeys: [] = None
+    privateKey: str = None
     secureStorageService: object
     storageService: StorageService
 
