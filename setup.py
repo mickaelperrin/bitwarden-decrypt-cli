@@ -15,7 +15,6 @@ EMAIL = 'dev@mickaelperrin.fr'
 AUTHOR = 'Mickaël Perrin'
 REQUIRES_PYTHON = '>=3.6.0'
 VERSION = None
-REQUIRED = []
 EXTRAS = {}
 
 # ------------------------------------------------
@@ -28,6 +27,12 @@ try:
         long_description = '\n' + f.read()
 except FileNotFoundError:
     long_description = DESCRIPTION
+
+try:
+    with io.open(os.path.join(here, 'requirements', 'common.txt'), encoding='utf-8') as f:
+        REQUIRED = f.read().splitlines()
+except FileNotFoundError:
+    REQUIRED = []
 
 # Load the package's __version__.py module as a dictionary.
 about = {}
@@ -83,6 +88,7 @@ setup(
     description=DESCRIPTION,
     long_description=long_description,
     long_description_content_type='text/markdown',
+    keywords='bitwarden cli password secrets',
     author=AUTHOR,
     author_email=EMAIL,
     python_requires=REQUIRES_PYTHON,
@@ -90,10 +96,9 @@ setup(
     packages=find_packages(exclude=["tests", "*.tests", "*.tests.*", "tests.*"]),
     # If your package is a single module, use this instead of 'packages':
     # py_modules=['mypackage'],
-
-    # entry_points={
-    #     'console_scripts': ['mycli=mymodule:cli'],
-    # },
+    entry_points={
+         'console_scripts': ['bw-simple=bitwarden_simple_cli.__main__:start'],
+    },
     install_requires=REQUIRED,
     extras_require=EXTRAS,
     include_package_data=True,
@@ -102,6 +107,13 @@ setup(
         # Trove classifiers
         # Full list: https://pypi.python.org/pypi?%3Aaction=list_classifiers
         'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
+        'Development Status :: 4 - Beta',
+        'Environment :: Console',
+        'Intended Audience :: Information Technology',
+        'Natural Language :: French',
+        'Topic :: Security',
+        'Topic :: Security :: Cryptography',
+        'Topic :: Utilities',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.6',

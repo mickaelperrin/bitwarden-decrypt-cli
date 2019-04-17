@@ -2,15 +2,22 @@
 
 > This is a port of the Bitwarden NodeJS CLI to Python focused on decryption of secrets
 
+## How to install
+
+### Pip
+```
+pip install bitwarden-simple-cli
+```
+
 ## How to use ?
 
 ### Get decrypted valued
 ```
-python3 main.py get UUID FIELD
+bw-simple get UUID FIELD
 ```
 ### List items
 ```
-python3 main.py list
+bw-simple list
 ```
 
 ## Currently supported fields
