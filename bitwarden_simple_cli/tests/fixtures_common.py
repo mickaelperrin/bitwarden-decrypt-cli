@@ -1,6 +1,6 @@
 import pytest
 from json import loads as json_loads
-from os import path
+from os import path, environ
 from bitwarden_simple_cli.services.StorageService import StorageService
 from bitwarden_simple_cli.services.SecureStorageService import SecureStorageService
 from bitwarden_simple_cli.services.CryptoService import CryptoService
@@ -80,7 +80,8 @@ def common_data(item):
 
 @pytest.fixture
 def no_bw_session(monkeypatch):
-    monkeypatch.delenv('BW_SESSION')
+    if environ.get('BW_SESSION'):
+        monkeypatch.delenv('BW_SESSION')
 
 
 @pytest.fixture
