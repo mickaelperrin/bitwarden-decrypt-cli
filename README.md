@@ -110,6 +110,18 @@ bw-simple get 5bfd3729-7074-46f8-bbe8-aa2a00d8c0f0 username > /dev/null  0,12s u
 
 ```
 
+## Development
+
+Development requirements are listed in requirements/dev.txt
+
+```
+mkvirtualenv3 bitwarden-simple-cli
+workon bitwarden-simple-cli
+pip3 install -r requirements/dev.txt
+```
+
+Testing is done through `pytest`. A sample database unlocked with `BW_SESSION` are provided.
+
 ## License
 
 GPLv3
