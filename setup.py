@@ -38,7 +38,10 @@ except FileNotFoundError:
 about = {}
 if not VERSION:
     project_slug = NAME.lower().replace("-", "_").replace(" ", "_")
-    with open(os.path.join(here, project_slug, '__version__.py')) as f:
+    version_file_path = os.path.join(here, project_slug, '__version__.py')
+    if not os.path.exists(version_file_path):
+        raise Exception('Unable to find version file at path: %s' % version_file_path)
+    with open(version_file_path) as f:
         exec(f.read(), about)
 else:
     about['__version__'] = VERSION
@@ -80,6 +83,9 @@ class UploadCommand(Command):
 
         sys.exit()
 
+
+if not about['__version__']:
+    raise Exception('Version is not set')
 
 # Where the magic happens:
 setup(
