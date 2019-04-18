@@ -1,4 +1,7 @@
 # Bitwarden decrypt CLI
+[![Build Status](https://travis-ci.org/mickaelperrin/bitwarden-decrypt-cli.png?branch=master)](https://travis-ci.org/mickaelperrin/bitwarden-decrypt-cli)
+[![codecov](https://codecov.io/gh/mickaelperrin/bitwarden-decrypt-cli/branch/master/graph/badge.svg)](https://codecov.io/gh/mickaelperrin/bitwarden-decrypt-cli)
+
 
 > This is a port of the Bitwarden NodeJS CLI to Python focused on decryption of secrets
 
