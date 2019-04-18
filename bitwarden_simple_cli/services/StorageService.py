@@ -27,6 +27,8 @@ class StorageService:
             path = os_path.join(environ.get('HOME'), 'Library/Application Support/Bitwarden CLI')
         elif system() == 'Windows':
             path = os_path.join(environ.get('APPDATA'), 'Bitwarden CLI')
+        else:
+            path = None
 
         if path is not None or path != '':
             return path
