@@ -1,5 +1,6 @@
 language: python
 python: "3.7"
+dist: bionic
 before_install: pip3 install --upgrade pip && pip3 install -r requirements/dev.txt
 install: pip3 install bitwarden_simple_cli
 script: pytest
