@@ -14,7 +14,6 @@ matrix:
         - "3.6"
         - "3.7"
         - "3.8-dev"
-        - "pypy3.5"
       dist: xenial
       language: shell
     - name: "Python 3.7.2 on macOS"
