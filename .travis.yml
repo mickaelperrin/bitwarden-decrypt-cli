@@ -7,6 +7,7 @@ install:
   - pip3 install codecov
 script: pytest --cov-report=xml --cov=bitwarden_simple_cli
 deploy:
+  skip_cleanup: true
   provider: pypi
   user: mickaelperrin
   password:
