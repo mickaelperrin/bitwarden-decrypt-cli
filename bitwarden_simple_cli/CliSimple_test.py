@@ -57,6 +57,12 @@ def test_get_uuid(cli_get_uuid, capsys, no_bw_session):
 
 
 @pytest.mark.usefixtures("bw_session")
+def test_get_return_value(cli_get_uuid, capsys, bw_session):
+    return_value = cli_get_uuid.run()
+    assert return_value == b'login_p_password'
+
+
+@pytest.mark.usefixtures("bw_session")
 def test_get_uuid_without_field(cli_get_uuid, capsys, bw_session):
     cli_get_uuid.run()
     std = capsys.readouterr()

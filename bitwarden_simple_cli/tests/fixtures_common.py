@@ -80,6 +80,7 @@ def common_data(item):
 
 @pytest.fixture
 def no_bw_session(monkeypatch):
+    monkeypatch.setenv('BITWARDENCLI_APPDATA_DIR', path.dirname(__file__))
     if environ.get('BW_SESSION'):
         monkeypatch.delenv('BW_SESSION')
 

@@ -20,13 +20,18 @@ class StorageService:
     @staticmethod
     def guess_database_dir():
         if environ.get('BITWARDENCLI_APPDATA_DIR'):
-            return environ.get('BITWARDENCLI_APPDATA_DIR')
+            path = environ.get('BITWARDENCLI_APPDATA_DIR')
         elif system() == 'Linux':
-            return environ.get('XDG_CONFIG_HOME')
+            path = environ.get('XDG_CONFIG_HOME')
         elif system() == 'Darwin':
-            return os_path.join(environ.get('HOME'), 'Library/Application Support/Bitwarden CLI')
+            path = os_path.join(environ.get('HOME'), 'Library/Application Support/Bitwarden CLI')
         elif system() == 'Windows':
-            return os_path.join(environ.get('APPDATA'), 'Bitwarden CLI')
+            path = os_path.join(environ.get('APPDATA'), 'Bitwarden CLI')
+        else:
+            path = None
+
+        if path is not None and path != '':
+            return path
         else:
             return os_path.join(environ.get('HOME'), '.config/Bitwarden CLI')
 

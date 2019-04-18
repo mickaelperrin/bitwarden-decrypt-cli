@@ -1,0 +1,6 @@
+[run]
+source =
+    .
+
+omit =
+    bitwarden_simple_cli/__main__.py

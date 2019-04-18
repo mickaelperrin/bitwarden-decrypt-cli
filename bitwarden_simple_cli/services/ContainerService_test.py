@@ -3,8 +3,10 @@ from bitwarden_simple_cli.services.ContainerService import ContainerService
 from bitwarden_simple_cli.services.StorageService import StorageService
 from bitwarden_simple_cli.services.SecureStorageService import SecureStorageService
 from bitwarden_simple_cli.services.CryptoService import CryptoService
+from bitwarden_simple_cli.tests.fixtures_common import bw_session
 
 
+@pytest.mark.usefixtures("bw_session")
 def test_container_service():
     storage_service = StorageService()
     crypto_service = CryptoService(storage_service)
