@@ -30,7 +30,7 @@ class StorageService:
         else:
             path = None
 
-        if path is not None or path != '':
+        if path is not None and path != '':
             return path
         else:
             return os_path.join(environ.get('HOME'), '.config/Bitwarden CLI')
