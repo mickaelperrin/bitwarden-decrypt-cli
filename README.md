@@ -11,9 +11,9 @@ pip3 install bitwarden-simple-cli
 
 ## How to use ?
 
-This tool do not replace the official NodeJs CLI of Bitwarden. It's a complementary tool to increase retrieval of numbers of secrets.
+This tool do not replace the official NodeJs CLI of Bitwarden. You still need it to perform auth, unlock and sync operations.
 
-First, ensure that your bitwarden vault in unlocked and that your register the BW_SESSION in you environment.
+First, ensure that your bitwarden vault in unlocked and that you register the BW_SESSION in your environment.
 
 ### Get decrypted valued
 ```
