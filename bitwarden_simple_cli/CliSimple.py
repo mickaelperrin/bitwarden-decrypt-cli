@@ -1,7 +1,15 @@
 from .__version__ import __version__
 from sys import exit
 from bitwarden_simple_cli.Bitwarden import Bitwarden
+from uuid import UUID
 
+
+def is_uuid(uuid_string, version=4):
+    try:
+        uid = UUID(uuid_string, version=version)
+        return uid.hex == uuid_string.replace('-', '')
+    except ValueError:
+        return False
 
 class CliSimple:
 
@@ -10,11 +18,14 @@ class CliSimple:
     script_name: str
     uuid: str
 
-    def __init__(self, script_name, action='version', uuid=None, field='password'):
-        self.action = action
+    def __init__(self, script_name, action='version', field='password', uuid=None):
         self.field = field
-        self.script_name = script_name
         self.uuid = uuid
+        if uuid is None and is_uuid(self.field):
+            self.field = 'password'
+            self.uuid = field
+        self.action = action
+        self.script_name = script_name
 
     def run(self):
         if self.action == 'get':

@@ -17,7 +17,7 @@ First, ensure that your bitwarden vault in unlocked and that you register the BW
 
 ### Get decrypted valued
 ```
-bw-simple get UUID FIELD
+bw-simple get [FIELD=password] UUID
 ```
 ### List items
 ```
@@ -85,29 +85,28 @@ bw get username 5bfd3729-7074-46f8-bbe8-aa2a00d8c0f0 > /dev/null  1,00s user 0,1
 #### bw-simple: 20 requests - 2,2s
 
 ```
-time (for i in {1..20}; do IDS=('5bfd3729-7074-46f8-bbe8-aa2a00d8c0f0' 'e050ece7-2361-4415-860b-aa2a00d9d2bd' '684119e7-3039-45f3-95e3-aa2a00db18f9') FIELDS=('password' 'username'); eval "time bw-simple get ${IDS[$((RANDOM % ${#IDS[@]}+1))]} ${FIELDS[$((RANDOM % ${#FIELDS[@]}+1))]} > /dev/null"; done)
-bw-simple get 684119e7-3039-45f3-95e3-aa2a00db18f9 username > /dev/null  0,10s user 0,02s system 97% cpu 0,125 total
-bw-simple get 5bfd3729-7074-46f8-bbe8-aa2a00d8c0f0 username > /dev/null  0,11s user 0,02s system 97% cpu 0,142 total
-bw-simple get 684119e7-3039-45f3-95e3-aa2a00db18f9 username > /dev/null  0,11s user 0,02s system 97% cpu 0,134 total
-bw-simple get e050ece7-2361-4415-860b-aa2a00d9d2bd password > /dev/null  0,11s user 0,02s system 97% cpu 0,137 total
-bw-simple get 684119e7-3039-45f3-95e3-aa2a00db18f9 password > /dev/null  0,11s user 0,02s system 97% cpu 0,131 total
-bw-simple get 684119e7-3039-45f3-95e3-aa2a00db18f9 password > /dev/null  0,11s user 0,02s system 97% cpu 0,133 total
-bw-simple get e050ece7-2361-4415-860b-aa2a00d9d2bd username > /dev/null  0,10s user 0,02s system 97% cpu 0,128 total
-bw-simple get 684119e7-3039-45f3-95e3-aa2a00db18f9 password > /dev/null  0,11s user 0,02s system 97% cpu 0,135 total
-bw-simple get e050ece7-2361-4415-860b-aa2a00d9d2bd password > /dev/null  0,11s user 0,02s system 97% cpu 0,141 total
-bw-simple get 684119e7-3039-45f3-95e3-aa2a00db18f9 password > /dev/null  0,11s user 0,02s system 97% cpu 0,135 total
-bw-simple get e050ece7-2361-4415-860b-aa2a00d9d2bd username > /dev/null  0,10s user 0,02s system 97% cpu 0,131 total
-bw-simple get 5bfd3729-7074-46f8-bbe8-aa2a00d8c0f0 username > /dev/null  0,12s user 0,03s system 97% cpu 0,151 total
-bw-simple get 5bfd3729-7074-46f8-bbe8-aa2a00d8c0f0 password > /dev/null  0,12s user 0,03s system 97% cpu 0,146 total
-bw-simple get e050ece7-2361-4415-860b-aa2a00d9d2bd username > /dev/null  0,11s user 0,02s system 97% cpu 0,138 total
-bw-simple get e050ece7-2361-4415-860b-aa2a00d9d2bd password > /dev/null  0,11s user 0,02s system 97% cpu 0,134 total
-bw-simple get 684119e7-3039-45f3-95e3-aa2a00db18f9 password > /dev/null  0,11s user 0,02s system 97% cpu 0,139 total
-bw-simple get 684119e7-3039-45f3-95e3-aa2a00db18f9 password > /dev/null  0,11s user 0,02s system 97% cpu 0,142 total
-bw-simple get 684119e7-3039-45f3-95e3-aa2a00db18f9 password > /dev/null  0,11s user 0,02s system 97% cpu 0,131 total
-bw-simple get e050ece7-2361-4415-860b-aa2a00d9d2bd username > /dev/null  0,11s user 0,02s system 97% cpu 0,138 total
-bw-simple get 5bfd3729-7074-46f8-bbe8-aa2a00d8c0f0 username > /dev/null  0,12s user 0,02s system 97% cpu 0,143 total
-( for i in {1..20}; do; IDS=('5bfd3729-7074-46f8-bbe8-aa2a00d8c0f0'  ) FIELDS)  2,20s user 0,48s system 97% cpu 2,738 total
-
+time (for i in {1..20}; do IDS=('5bfd3729-7074-46f8-bbe8-aa2a00d8c0f0' 'e050ece7-2361-4415-860b-aa2a00d9d2bd' '684119e7-3039-45f3-95e3-aa2a00db18f9') FIELDS=('password' 'username'); eval "time bw-simple get ${FIELDS[$((RANDOM % ${#FIELDS[@]}+1))]} ${IDS[$((RANDOM % ${#IDS[@]}+1))]} > /dev/null"; done)
+bw-simple get username e050ece7-2361-4415-860b-aa2a00d9d2bd > /dev/null  0,08s user 0,03s system 84% cpu 0,134 total
+bw-simple get password 684119e7-3039-45f3-95e3-aa2a00db18f9 > /dev/null  0,08s user 0,02s system 96% cpu 0,110 total
+bw-simple get username 5bfd3729-7074-46f8-bbe8-aa2a00d8c0f0 > /dev/null  0,08s user 0,02s system 96% cpu 0,113 total
+bw-simple get password e050ece7-2361-4415-860b-aa2a00d9d2bd > /dev/null  0,09s user 0,03s system 96% cpu 0,116 total
+bw-simple get password e050ece7-2361-4415-860b-aa2a00d9d2bd > /dev/null  0,08s user 0,03s system 95% cpu 0,108 total
+bw-simple get password e050ece7-2361-4415-860b-aa2a00d9d2bd > /dev/null  0,08s user 0,02s system 96% cpu 0,107 total
+bw-simple get username 5bfd3729-7074-46f8-bbe8-aa2a00d8c0f0 > /dev/null  0,09s user 0,03s system 97% cpu 0,116 total
+bw-simple get password 5bfd3729-7074-46f8-bbe8-aa2a00d8c0f0 > /dev/null  0,09s user 0,03s system 96% cpu 0,122 total
+bw-simple get password 5bfd3729-7074-46f8-bbe8-aa2a00d8c0f0 > /dev/null  0,09s user 0,03s system 95% cpu 0,115 total
+bw-simple get username e050ece7-2361-4415-860b-aa2a00d9d2bd > /dev/null  0,09s user 0,03s system 97% cpu 0,115 total
+bw-simple get username 5bfd3729-7074-46f8-bbe8-aa2a00d8c0f0 > /dev/null  0,08s user 0,03s system 96% cpu 0,113 total
+bw-simple get username e050ece7-2361-4415-860b-aa2a00d9d2bd > /dev/null  0,09s user 0,03s system 96% cpu 0,118 total
+bw-simple get password e050ece7-2361-4415-860b-aa2a00d9d2bd > /dev/null  0,08s user 0,03s system 95% cpu 0,109 total
+bw-simple get password 684119e7-3039-45f3-95e3-aa2a00db18f9 > /dev/null  0,08s user 0,02s system 96% cpu 0,102 total
+bw-simple get password e050ece7-2361-4415-860b-aa2a00d9d2bd > /dev/null  0,08s user 0,02s system 96% cpu 0,102 total
+bw-simple get username e050ece7-2361-4415-860b-aa2a00d9d2bd > /dev/null  0,08s user 0,02s system 96% cpu 0,106 total
+bw-simple get username 5bfd3729-7074-46f8-bbe8-aa2a00d8c0f0 > /dev/null  0,08s user 0,02s system 97% cpu 0,106 total
+bw-simple get username 5bfd3729-7074-46f8-bbe8-aa2a00d8c0f0 > /dev/null  0,08s user 0,02s system 96% cpu 0,110 total
+bw-simple get password 684119e7-3039-45f3-95e3-aa2a00db18f9 > /dev/null  0,09s user 0,03s system 96% cpu 0,115 total
+bw-simple get username 5bfd3729-7074-46f8-bbe8-aa2a00d8c0f0 > /dev/null  0,08s user 0,02s system 96% cpu 0,107 total
+( for i in {1..20}; do; IDS=('5bfd3729-7074-46f8-bbe8-aa2a00d8c0f0'  ) FIELDS)  1,64s user 0,52s system 95% cpu 2,250 total
 ```
 
 ## Development
