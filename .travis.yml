@@ -10,7 +10,7 @@ deploy:
   skip_cleanup: true
   provider: pypi
   user: mickaelperrin
-  distributions: "sdist bdist bdist_wheel"
+  distributions: "bdist bdist_wheel"
   password:
     secure: "Vh5Ly3iK8M5MBQ2tgCHBetsA4f7w4I4/oAnMTwr4FZ6UNDjczKoqtgYWt/IsVJSyJJK79gWdhZy8iwoq7tM1gO57Lj1vOJZhibXHPJGqq4R4hbBWtNmjwmMi88d4kd2m1P48ZYyi7gl0JnjdgCUAHHSCczrJ9jEFVzS6x+EY+dYQXrx4p1S3GkMG6gLAMZVyaXmbC1lX0iHME1O3/0UfmwDjaVGURx/r5j+l0XU+7d+uo3iO/gve/Izyc/4joRGVRLRGWu9gKx2mCbVYurawrV2qNGWdpUanFONneB4F8SJwhgsSKHE/be/FzrZw4dOWW2CMIeDZM5Se0X9F1/lvtK6LYttmHanoo/UL62vhl8e49irvVAM/jY5OgG3CKriQMFwoxrLlziZr6XkZmkSzVpULSOI/FyW1t1vt05Gel5OYtL79f43eVHAgLHxk9wggmkPV1B0GFTeciNtKCiadTQDbRDA8qcwxcaC5SGgNcw6VorrFjiFT1YeJ9dXi7Jp9knljIhCVRM87CGIFxNhk+JgH5aZ43+t5rKFbLhr78RmmyC5d/5yR3uhP5iSdmu1rK5B8acMQpyg29ehKLEFhCo6wm24ut026Wpdr3cM1XgZP9a5ORWby1TQQj0v8JmtSKFJ/Vn3ZU/fHbuO6M7rA73MQ0y5hzqLpHCTzzagw540="
   skip_existing: true
