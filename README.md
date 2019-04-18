@@ -122,6 +122,8 @@ workon bitwarden-simple-cli
 pip3 install -r requirements/dev.txt
 ```
 
+## Testing
+
 Testing is done through `pytest`. A sample database unlocked with `BW_SESSION` are provided.
 
 ## License
