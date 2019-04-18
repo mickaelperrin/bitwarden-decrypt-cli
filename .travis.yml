@@ -13,17 +13,19 @@ matrix:
       python:
         - "3.6"
       dist: xenial
-      language: shell
+      language: python
 
 jobs:
   include:
     - stage: "Tests"
       name: "Unit tests"
-      install: pip3 install -r requirements/dev.txt
+      before_install: pip3 install -r requirements/dev.txt
+      install: pip3 install .
       script: pytest
     - stage: "Build"
       name: "Build"
-      install: pip3 install -r requirements.txt
+      before_install: pip3 install -r requirements.txt
+      install: pip3 install .
     - stage: "Deploy"
       name: "Deploy"
       deploy:
