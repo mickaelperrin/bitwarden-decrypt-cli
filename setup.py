@@ -13,7 +13,7 @@ DESCRIPTION = 'Simple bitwarden CLI written in Python to list and decrypt secret
 URL = 'https://github.com/mickaelperrin/bitwarden-decrypt-cli'
 EMAIL = 'dev@mickaelperrin.fr'
 AUTHOR = 'Mickaël Perrin'
-REQUIRES_PYTHON = '>=3.6.0'
+REQUIRES_PYTHON = '>=3.7.0'
 VERSION = None
 EXTRAS = {}
 
@@ -116,7 +116,7 @@ setup(
         'Topic :: Utilities',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy'
     ],
