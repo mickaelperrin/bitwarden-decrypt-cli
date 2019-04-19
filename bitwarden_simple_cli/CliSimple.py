@@ -1,7 +1,7 @@
 from .__version__ import __version__
 from sys import exit
 from bitwarden_simple_cli.Bitwarden import Bitwarden
-from bitwarden_simple_cli.exceptions.ManagedException import ManagedException, ProperExit
+from bitwarden_simple_cli.exceptions.ManagedException import ManagedException
 from uuid import UUID
 
 
