@@ -2,6 +2,7 @@ import pytest
 from bitwarden_simple_cli.CliSimple import CliSimple
 from bitwarden_simple_cli.__version__ import __version__
 from bitwarden_simple_cli.tests.fixtures_common import common_data, bw_session, no_bw_session
+from bitwarden_simple_cli.exceptions.ManagedException import ManagedException
 
 nl = common_data("nl")
 
@@ -203,3 +204,19 @@ def test_list(capsys):
 "fe6e74aa-a099-4cc1-ae8e-aa3000d02c14 acme login 1\n\
 fd8870cc-3659-40aa-9492-aa3000cedbb3 login personnal\n\
 450cbad2-580b-4523-bce8-aa3000cf641a note personal\n"
+
+
+@pytest.mark.usefixtures("bw_session")
+def test_get_wrong_uuid():
+    with pytest.raises(SystemExit) as e:
+        CliSimple('script', 'get', 'name', 'wrong-uuid').run()
+    assert e.type == SystemExit
+    assert e.value.code == 'Unable to find entry with id: wrong-uuid'
+
+
+@pytest.mark.usefixtures("bw_session")
+def test_get_wrong_field():
+    with pytest.raises(SystemExit) as e:
+        CliSimple('script', 'get', 'unexisting', common_data('uuid_note_personal')).run()
+    assert e.type == SystemExit
+    assert e.value.code == 'Unable to find field unexisting for entry with id: ' + common_data('uuid_note_personal')

@@ -1,6 +1,7 @@
 from .__version__ import __version__
 from sys import exit
 from bitwarden_simple_cli.Bitwarden import Bitwarden
+from bitwarden_simple_cli.exceptions.ManagedException import ManagedException, ProperExit
 from uuid import UUID
 
 
@@ -10,6 +11,7 @@ def is_uuid(uuid_string, version=4):
         return uid.hex == uuid_string.replace('-', '')
     except ValueError:
         return False
+
 
 class CliSimple:
 
@@ -46,8 +48,11 @@ class CliSimple:
 
     @staticmethod
     def get(uuid, field):
-        app = Bitwarden()
-        return app.get(uuid, field)
+        try:
+            app = Bitwarden()
+            return app.get(uuid, field)
+        except ManagedException as e:
+            exit(e.args[0])
 
     @staticmethod
     def list():

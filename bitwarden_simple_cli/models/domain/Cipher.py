@@ -3,6 +3,7 @@ from bitwarden_simple_cli.models.domain.DomainBase import Domain
 from bitwarden_simple_cli.models.domain.Field import Field
 from bitwarden_simple_cli.enums.CipherType import CipherType
 from bitwarden_simple_cli.models.domain.Login import Login
+from bitwarden_simple_cli.exceptions.ManagedException import ManagedException
 
 
 class Cipher(Domain):
@@ -60,4 +61,5 @@ class Cipher(Domain):
             for custom_field in self.fields:
                 if str(custom_field.name.decrypt(self.organizationId), 'utf-8') == field:
                     return custom_field.value.decrypt(self.organizationId)
+            raise ManagedException('Unable to find field %s for entry with id: %s' % (field, self.id))
 

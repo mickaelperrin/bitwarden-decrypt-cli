@@ -6,6 +6,7 @@ from bitwarden_simple_cli.services.SecureStorageService import SecureStorageServ
 from bitwarden_simple_cli.services.StorageService import StorageService
 from bitwarden_simple_cli.services.UserService import UserService
 from bitwarden_simple_cli.services.CipherService import CipherService
+from bitwarden_simple_cli.exceptions.ManagedException import ManagedException
 
 
 class Bitwarden:
@@ -36,8 +37,7 @@ class Bitwarden:
         self._exit_if_no_session()
         cipher = self.cipherService.get(uuid)
         if cipher is None:
-            print('Unable to find entry with id :' + uuid, file=stderr)
-            exit(1)
+            raise ManagedException('Unable to find entry with id: ' + uuid)
         decrypted_value = cipher.decrypt_field(field)
         if type(decrypted_value).__name__ == 'bytes':
             print(str(decrypted_value, 'utf-8'), end='')
