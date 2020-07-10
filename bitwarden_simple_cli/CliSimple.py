@@ -50,14 +50,26 @@ class CliSimple:
     def get(uuid, field):
         try:
             app = Bitwarden()
-            return app.get(uuid, field)
+            decrypted_value = app.get(uuid, field)
+            if type(decrypted_value).__name__ == 'bytes':
+                print(str(decrypted_value, 'utf-8'), end='')
+                return decrypted_value
+            elif type(decrypted_value).__name__ == 'list':
+                for item in decrypted_value:
+                    print(str(item, 'utf-8'))
+                return decrypted_value
+            else:
+                print(decrypted_value, file=stderr)
         except ManagedException as e:
             exit(e.args[0])
 
     @staticmethod
     def list():
         app = Bitwarden()
-        return app.list()
+        ciphers = app.list()
+        for cipher in ciphers:
+            print(cipher['id'] + ' ' + str(cipher['name'].decrypt(cipher['org_id']), 'utf-8'))
+
 
     @staticmethod
     def version():

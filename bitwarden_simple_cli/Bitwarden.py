@@ -38,21 +38,10 @@ class Bitwarden:
         cipher = self.cipherService.get(uuid)
         if cipher is None:
             raise ManagedException('Unable to find entry with id: ' + uuid)
-        decrypted_value = cipher.decrypt_field(field)
-        if type(decrypted_value).__name__ == 'bytes':
-            print(str(decrypted_value, 'utf-8'), end='')
-            return decrypted_value
-        elif type(decrypted_value).__name__ == 'list':
-            for item in decrypted_value:
-                print(str(item, 'utf-8'))
-            return decrypted_value
-        else:
-            print(decrypted_value, file=stderr)
+        return cipher.decrypt_field(field)
 
     def list(self):
         self._exit_if_no_session()
         ciphers = self.storageService.list_ciphers(self.userService.get_user_id())
-        for cipher in ciphers:
-            print(cipher['id'] + ' ' + str(cipher['name'].decrypt(cipher['org_id']), 'utf-8'))
-
+        return ciphers
 
