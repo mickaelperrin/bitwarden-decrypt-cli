@@ -6,7 +6,7 @@ more-itertools==7.0.0
 pluggy==0.9.0
 pp-ez==0.2.0
 pprintpp==0.4.0
-py==1.8.0
+py==1.10.0
 pytest==4.4.0
 pytest-cov==2.6.1
 six==1.12.0
